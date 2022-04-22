@@ -1,0 +1,65 @@
+<div class="container">
+  <h1 class="example-form">Formulario Detalle del Curso </h1>
+
+  <form class="example-form" [formGroup]="formGroup">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Codigo Curso</mat-label>
+      <input matInput readonly="true" formControlName="codigoCurso" #message maxlength="256" placeholder="1065">
+      <mat-hint align="start"><strong>Este es el codigo del curso Consultado </strong> </mat-hint>
+      <mat-hint align="end">{{codigoCurso.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre Curso</mat-label>
+      <input matInput readonly="true" formControlName="nombreCurso" #message maxlength="256" placeholder="Fisica Nuclear">
+      <mat-hint align="start"><strong>Este es el nombre del curso Consultado</strong> </mat-hint>
+      <mat-hint align="end">{{nombreCurso.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Tutor</mat-label>
+      <input matInput readonly="true" formControlName="tutor" #message maxlength="256">
+      <mat-hint align="start"><strong>Este es el nombre del tutor del curso</strong> </mat-hint>
+      <mat-hint align="end">{{tutor.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+
+  </form>
+</div>
+<h1 > A continuacion se muestran los temas del curso consultado </h1>
+<div class="table-responsive">
+  <mat-form-field>
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <!-- id Column -->
+    <ng-container matColumnDef="id" style="display:none">
+      <th mat-header-cell *matHeaderCellDef style="display:none"> Id </th>
+      <td mat-cell *matCellDef="let element" style="display:none"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- codigoTema Column -->
+    <ng-container matColumnDef="codigoTema">
+      <th mat-header-cell *matHeaderCellDef> <b>CodigoTema </b></th>
+      <td mat-cell *matCellDef="let element"> {{element.codigoTema}} </td>
+    </ng-container>
+
+    <!-- nombreTema Column -->
+    <ng-container matColumnDef="nombreTema">
+      <th mat-header-cell *matHeaderCellDef> <b>Nombre Tema</b> </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreTema}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+</div>
+<div class="example-button-row">
+  <mat-icon class="example-element-symbol" (click)="goBack()">undo</mat-icon>
+  <mat-label>Regresar</mat-label>
+</div>

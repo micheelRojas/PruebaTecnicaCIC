@@ -1,0 +1,50 @@
+<div class="container">
+  <h1 class="example-form">Formulario del Curso </h1>
+  <form class="example-form" [formGroup]="formGroup">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Codigo Curso</mat-label>
+      <input matInput type="number" formControlName="codigoCurso" #message maxlength="256" placeholder="1065">
+      <mat-hint align="start"><strong>Por favor dijite la Codigo del Curso </strong> </mat-hint>
+      <mat-hint align="end">{{codigoCurso.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre Curso</mat-label>
+      <input matInput formControlName="nombreCurso" #message maxlength="256" placeholder="Fisica Nuclear">
+      <mat-hint align="start"><strong>Por favor dijite el Nombre del Curso</strong> </mat-hint>
+      <mat-hint align="end">{{nombreCurso.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>TuTor</mat-label>
+      <mat-select [formControl]="tutor" required>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let tutor of tutores" [value]="tutor">
+          {{tutor.nombre}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="tutor.hasError('required')">Por Favor Selecione un Tutor</mat-error>
+      <mat-hint>{{tutor.value?.sound}}</mat-hint>
+    </mat-form-field>
+    <div>
+      <label>Por favor selecione el boton para agregar los temas</label>
+      <div><mat-icon class="example-element-symbol" (click)="openDialogAdd()">add_box</mat-icon></div>
+      
+     
+    </div>
+
+    <table>
+      <tr *ngFor="let item of temasdelCurso;let indice=index">
+        <td> {{indice+1}}
+        <td>{{item.nombre}}</td>
+      </tr>
+    </table>
+    <div> <label>Una vez culminado el formulario presione Aceptar</label></div>
+    <div class="example-button-row">
+      <button (click)="save()" type="submit" mat-fab color="accent">Aceptar</button>
+    </div>
+  </form>
+</div>
+
+

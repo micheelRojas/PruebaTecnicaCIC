@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="example-form">Formulario Editar del Curso </h1>
+
+  <form class="example-form" [formGroup]="formGroup">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Codigo Curso</mat-label>
+      <input matInput readonly="true" formControlName="codigoCurso" #message maxlength="256" placeholder="1065">
+      <mat-hint align="start"><strong>Este es el codigo del curso que se encuentra editando </strong> </mat-hint>
+      <mat-hint align="end">{{codigoCurso.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre Curso</mat-label>
+      <input matInput formControlName="nombreCurso" #message maxlength="256" placeholder="Fisica Nuclear">
+      <mat-hint align="start"><strong>Por favor dijite el nuevo Nombre del Curso</strong> </mat-hint>
+      <mat-hint align="end">{{nombreCurso.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+    <div class="example-button-row">
+      <button (click)="save()" type="submit" mat-fab color="accent">Aceptar</button>
+    </div>
+  </form>
+</div>

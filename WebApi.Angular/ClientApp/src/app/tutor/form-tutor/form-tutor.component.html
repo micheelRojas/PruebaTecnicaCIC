@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="example-form">Formulario del Tutor </h1>
+  <form class="example-form" [formGroup]="formGroup" (ngSubmit)="save()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Cedula</mat-label>
+      <input matInput type="number" formControlName="cedula" #message maxlength="256" placeholder="1065">
+      <mat-hint align="start"><strong>Por favor dijite la cedula del tutor</strong> </mat-hint>
+      <mat-hint align="end">{{cedula.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" #message maxlength="256" placeholder="Micheel Rojas">
+      <mat-hint align="start"><strong>Por favor dijite el nombre del tutor</strong> </mat-hint>
+      <mat-hint align="end">{{nombre.value.length}} / 256</mat-hint>
+    </mat-form-field>
+    <div class="example-button-row">
+      <button type="submit" mat-fab color="accent">Aceptar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,67 @@
+<div class="animated fadeIn fast"
+     fxLayout="row"
+     fxLayout.xs="column"
+     fxLayoutWrap
+     fxLayoutGap="0.5%"
+     fxLayoutAlign="center"
+     fxFlexFill>
+  <div fxLayoutAlign="center center"
+       fxFlex="35%"
+       fxFlex.sm="60"
+       fxFlex.md="45"
+       fxFlex.lg="45"
+       fxFlex.xl="45"
+       layout-padding>
+    <form [formGroup]="formGroup"
+          (ngSubmit)="onSubmit()"
+          flLayout="column"
+          fxLayoutGap="7px"
+          fxLayoutGap.xs="12px">
+      <div>
+        <h1> Temas </h1>
+      </div>
+      <div>
+
+        <mat-form-field fxFlex appearance="outline" style="padding-right: 8px;">
+          <mat-label>Codigo</mat-label>
+          <input type="number" matInput formControlName="codigo" required />
+          <mat-error *ngIf="formGroup.get('codigo').hasError('required')">
+            Codigo es requerido
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+
+        <mat-form-field fxFlex appearance="outline" style="padding-right: 8px;">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" required />
+          <mat-error *ngIf="formGroup.get('nombre').hasError('required')">
+            Nombre es requerido
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Buttons save, cancel -->
+      <div mat-dialog-actions>
+        <button mat-flat-button
+                color="secondary"
+                class="button-border"
+                fxFlex
+                style="padding-right: 8px;"
+                (click)="onNoClick()">
+
+          Cancelar
+        </button>
+        <button mat-flat-button
+                color="primary"
+                class="button-border"
+                fxFlex
+                [disabled]="!formGroup.valid"
+                type="submit">
+
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
